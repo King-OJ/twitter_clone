@@ -1,11 +1,16 @@
 import Footer from '@/components/Footer'
 import Register from '@/components/Register'
+import RegisterModal from '@/components/RegisterModal'
 import Sidebar from '@/components/Sidebar'
 import Trends from '@/components/Trends'
 import Head from 'next/head'
+import { useState } from 'react'
 
 
 export default function Home() {
+
+  const [isModalOpen, setIsModalOpen ] = useState(true)
+
   return (
     <>
       <Head>
@@ -15,11 +20,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       
-      <main className='container mx-auto h-screen'>
+      <main className='max-w-7xl mx-auto h-screen'>
+        {isModalOpen && <RegisterModal setIsModalOpen={setIsModalOpen} />}
         <div className="flex h-full">
           <Sidebar />
           <Trends />
-          <Register />
+          <Register setIsModalOpen={setIsModalOpen}/>
         </div>
         <Footer />
       </main>
