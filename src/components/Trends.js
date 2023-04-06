@@ -9,7 +9,7 @@ export default function Trends() {
   const trends = [
     {
       location: 'Nigeria',
-      title: 'Pelumi',
+      title: 'Clement Ojigs',
       count: 65
     },
     {

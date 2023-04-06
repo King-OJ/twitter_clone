@@ -8,8 +8,11 @@ import { useState } from 'react'
 
 
 export default function Home() {
-
-  const [isModalOpen, setIsModalOpen ] = useState(true)
+  const initialState = {
+    isModalOpen: false,
+    isMember: false
+  }
+  const [details, setDetails ] = useState(initialState)
 
   return (
     <>
@@ -21,13 +24,13 @@ export default function Home() {
       </Head>
       
       <main className='max-w-7xl mx-auto h-screen'>
-        {isModalOpen && <RegisterModal setIsModalOpen={setIsModalOpen} />}
+        {details.isModalOpen && <RegisterModal details={details} setDetails={setDetails} />}
         <div className="flex h-full">
           <Sidebar />
           <Trends />
-          <Register setIsModalOpen={setIsModalOpen}/>
+          <Register setDetails={setDetails} details={details}/>
         </div>
-        <Footer />
+        <Footer setDetails={setDetails} details={details}/>
       </main>
     </>
   )
