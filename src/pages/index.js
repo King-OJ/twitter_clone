@@ -4,15 +4,31 @@ import RegisterModal from '@/components/RegisterModal'
 import Sidebar from '@/components/Sidebar'
 import Trends from '@/components/Trends'
 import Head from 'next/head'
-import { useState } from 'react'
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 
 
-export default function Home() {
+export default function Landing() {
   const initialState = {
     isModalOpen: false,
-    isMember: false
+    newMember: false
   }
   const [details, setDetails ] = useState(initialState)
+  
+  const { user } = useSelector((store)=>store.auth)
+  const router = useRouter()
+
+  useEffect(() => {
+    if(user){
+      setTimeout(() => {
+        setDetails(initialState)
+        router.push('/home')
+      }, 2000);
+    }
+    
+  }, [ user ])
+  
 
   return (
     <>

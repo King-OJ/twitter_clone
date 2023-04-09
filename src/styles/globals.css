@@ -14,6 +14,10 @@ button {
   @apply transition-all duration-200 capitalize md:tracking-wider;
 }
 
+button:disabled {
+  @apply cursor-wait;
+}
+
 .signup svg{
   @apply mr-1 text-xl;
 }
